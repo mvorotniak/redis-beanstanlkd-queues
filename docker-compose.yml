@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  beanstalkd:
+    image: schickling/beanstalkd
+    container_name: beanstalkd
+    ports:
+      - "11300:11300"
+    restart: always
+        
+  redis-rdb:
+    image: redis:latest
+    container_name: redis-rdb
+    command: ["redis-server", "--save", "60", "1", "--save", "300", "100"]
+    ports:
+      - "6379:6379"
+    restart: always
+
+  redis-aof:
+    image: redis:latest
+    container_name: redis-aof
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1", "--save", "300", "100"]
+    ports:
+      - "6380:6379"
+    restart: always

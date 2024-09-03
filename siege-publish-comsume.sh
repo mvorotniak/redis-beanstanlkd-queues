@@ -1,0 +1,1 @@
+siege -d0  -c100  -v -t10s -f ./siege-urls/urls.txt

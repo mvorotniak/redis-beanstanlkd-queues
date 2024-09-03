@@ -1,0 +1,1 @@
+siege -d0  -c100  -v -t10s http://localhost:8080/consume?queue=BEANSTALKD
